@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 簡介
+此專案是使用Google Vision API 實作的簡單文字辨識的prototype
 
-## Getting Started
+> 起始畫面
+![](./README/uploadImg.png)
 
-First, run the development server:
+> 結果
+![](./README/demo1.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 安裝步驟
+1. 安裝到本地端
+```
+git clone https://github.com/TinyMurky/nextjs_ocr.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. cd 進入資料夾
+```
+cd nextjs_ocr
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. 安裝必要工具
+```
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. 修改 .env.local：
+將 `./.env.local.example`改名成為`.env.local`，並輸入以下資料
+- `GOOGLE_PROJECT_ID`: 輸入GCP project資料
+- `GOOGLE_CREDENTIALS_BASE64`: google service account 金鑰json檔經過Base 64轉換版本
 
-## Learn More
+可以用下面指令切換
+```
+base64 -i 金鑰.json -o 轉出base64存放位置
+```
 
-To learn more about Next.js, take a look at the following resources:
+> 以上資料也可以直接找Murky要
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. 啟動專案
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+或是
+```
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+6. 進入網頁使用
+打開網頁輸入：
+```
+localhost:3000
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+點擊畫面左側的 **相機** 可以上傳圖片，upload之後會檢視文字
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Google Vision Api Return
+Google vision回傳的資料可以在 [`./return.json`](./return.json) 中看到
